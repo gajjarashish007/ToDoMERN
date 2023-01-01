@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  DB_HOST: 192.168.56.103
+  DB_NAME: todo
+  DB_PASS: ""
+  DB_PORT: "32451"
+  DB_USER: ""
+  JWT_SECRET: MMM
+  REFRESH_SECRET: MMM
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    service: backend
+  name: backend-env

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: nginx
+  name: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: nginx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: nginx
+    spec:
+      containers:
+      - image: gajjarashish/nginx:V0.01
+        imagePullPolicy: ""
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+        volumeMounts:
+        - mountPath: /etc/nginx/conf.d/
+          name: nginx-conf
+      restartPolicy: Always
+      volumes:
+      - name: nginx-conf
+        persistentVolumeClaim:
+          claimName: nginx-pvc

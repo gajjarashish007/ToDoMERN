@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: frontend
+    spec:
+      containers:
+      - image: gajjarashish/frontend:V0.01
+        imagePullPolicy: ""
+        name: frontend
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+status: {}
